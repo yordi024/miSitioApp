@@ -87,6 +87,9 @@
     <plugin name="cordova-plugin-camera" spec="^4.0.3" />
     <plugin name="cordova-sqlite-storage" spec="^2.3.1" />
     <allow-navigation href="http://192.168.221.15:8101" />
+    <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="^4.2.0">
+        <variable name="LOCATION_USAGE_DESCRIPTION" value="This app requires access to your location for navigation purposes" />
+    </plugin>
     <engine name="ios" spec="4.5.4" />
-    <engine name="android" spec="~7.0.0" />
+    <engine name="android" spec="7.0.0" />
 </widget>

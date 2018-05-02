@@ -20,7 +20,7 @@ export class ModalNuevoSitioPage {
   coords:any = { lat: 0, lng: 0};
   address: string;
   description: string = '';
-  foto: any = 'foto';
+  foto: any = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController,
               private camera:Camera, private db:DbProvider, public alertCtrl: AlertController) {

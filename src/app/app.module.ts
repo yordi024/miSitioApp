@@ -9,6 +9,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { Camera } from '@ionic-native/camera';
 import { DbProvider } from '../providers/db/db';
 import { SQLite } from '@ionic-native/sqlite';
+import { LaunchNavigator } from '@ionic-native/launch-navigator';
+
 @NgModule({
   declarations: [
     MyApp
@@ -28,7 +30,8 @@ import { SQLite } from '@ionic-native/sqlite';
     Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DbProvider,
-    SQLite
+    SQLite,
+    LaunchNavigator
   ]
 })
 export class AppModule {}

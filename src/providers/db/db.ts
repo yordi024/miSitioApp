@@ -10,7 +10,7 @@ import { SQLite, SQLiteObject} from '@ionic-native/sqlite';
 export class DbProvider {
 
   db: SQLiteObject = null;
-  ready: Promise<void>;
+
   constructor(public sqlite:SQLite) {
     console.log('Hello DbProvider');
   }
@@ -20,7 +20,8 @@ export class DbProvider {
     return this.sqlite.create({
       name: 'data.db',
       location: 'default' //el campo location es obligatorio
-    }).then((db: SQLiteObject) =>{
+    })
+    .then((db: SQLiteObject) => {
       console.log("Opened");
       this.db = db;
     }).catch(e => {
@@ -30,8 +31,7 @@ export class DbProvider {
   }
 
   public createTableSitios(){
-    console.log('aqui');
-    return this.db.executeSql("CREATE TABLE IF NOT EXISTS sitios( id INTERGER PRIMARY KEY AUTOINCREMENT, lat FLOAT, lng FLOAT, address TEXT, description TEXT, foto TEXT)",{});
+    return this.db.executeSql("CREATE TABLE IF NOT EXISTS sitios( id INTEGER PRIMARY KEY AUTOINCREMENT, lat FLOAT, lng FLOAT, address TEXT, description TEXT, foto TEXT)",{});
   }
 
   public addSitio(sitio){
@@ -43,5 +43,15 @@ export class DbProvider {
   public getSitios(){
     let sql = "SELECT * FROM sitios";
     return this.db.executeSql(sql,{});
+  }
+
+  public modificarSitio(sitio){
+    let sql = "UPDATE sitios SET lat = ?, lng = ?, address = ?, description = ?, foto = ? WHERE id = ?";
+    return this.db.executeSql(sql, [sitio.lat, sitio.lng, sitio.address, sitio.description, sitio.foto, sitio.id]);
+  }
+
+  public borrarSitio(id){
+    let sql = 'DELETE FROM sitios WHERE id = ?';
+    return this.db.executeSql(sql , [id]);
   }
 }

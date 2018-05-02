@@ -15,12 +15,18 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let sitio of sitios">
+    <ion-item-sliding *ngFor="let sitio of sitios" (click)="muestraSitio(sitio)">
       <ion-thumbnail item-left>
         <img [src]="sitio.foto" alt="">
       </ion-thumbnail>
       <h2>{{ sitio.address }}</h2>
       <p>{{ sitio.description }}</p>
-    </ion-item>
+      <ion-item-options side="rigth">
+        <button ion-button color="danger" (click)="borrarSitio(sitio.id)">
+          <ion-icon name="trash"></ion-icon>
+          Borrar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 </ion-content>
