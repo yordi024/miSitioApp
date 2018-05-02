@@ -2,5 +2,7 @@
   "name": "miSitio",
   "app_id": "3b0d9fd1",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }
